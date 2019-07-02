@@ -50,24 +50,22 @@ class AppComponent extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     isAuth: state.auth.token !== null,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
       onAuthCheckState,
     },
-    dispatch,
+    dispatch
   );
 };
 
 export const App = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(AppComponent);
-
-// export default withStore(AppWithConnect);
