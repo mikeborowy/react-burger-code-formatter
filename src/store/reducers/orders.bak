@@ -1,0 +1,64 @@
+// API
+import { burgerAPI } from '../../services/api/index';
+
+export const actionTypes = {
+    ORDERS_INIT: 'ORDERS_INIT',
+    ORDERS_LOADING: 'ORDERS_LOADING',
+    ORDERS_SET: 'ORDERS_SET',
+    ORDERS_ERR: 'ORDERS_ERR'
+}
+
+//Action creators
+export const onOrdersLoading = () => ({ type: actionTypes.ORDERS_LOADING });
+export const onOrdersInit = () => ({ type: actionTypes.ORDERS_INIT });
+export const onOrdersError = (error) => ({ type: actionTypes.ORDERS_ERR, error });
+export const onOrdersSet = (orders) => ({ type: actionTypes.ORDERS_SET, orders });
+
+//API Action creators
+export const onOrdersGetAPI = () => async (dispatch) => {
+
+    const response = await burgerAPI.get('/orders.json');
+    const orders = [];
+    for (let key in response.data) {
+        orders.push({
+            ...response.data[key],
+            id: key
+        });
+    }
+
+    dispatch(onOrdersSet(orders));
+};
+
+//Reducer Model
+const inistialState = {
+    orders: [],
+    isLoading: false,
+    isPurchased: false
+};
+
+//Reducer
+export default (state = inistialState, action) => {
+    switch (action.type) {
+
+        case actionTypes.ORDERS_LOADING:
+            return {
+                ...state,
+                isPurchased: true
+            }
+
+        case actionTypes.ORDERS_SET:
+            return {
+                ...state,
+                orders: action.orders
+            }
+
+        case actionTypes.ORDERS_ERR:
+            return {
+                ...state,
+                isLoading: false
+            }
+
+        default:
+            return state;
+    }
+}
