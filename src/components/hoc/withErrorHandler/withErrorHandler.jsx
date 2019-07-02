@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Modal from '../../views/sharedLayout/modal/Modal';
-import Aux from '../aux/Aux';
+import { Modal } from '../../views/sharedLayout/modal/Modal';
+import { Aux } from '../aux/Aux';
 import { getDisplayName } from '../../../helpers';
 
 export const withErrorHandler = (WrappedComponent, axios) => {

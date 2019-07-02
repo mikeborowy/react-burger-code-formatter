@@ -14,47 +14,67 @@ export const actionTypes = {
 };
 
 // Action creators
-export const onOrderBurgerLoading = () => ({ type: actionTypes.ORDER_LOADING });
-export const onOrderBurgerInit = () => ({ type: actionTypes.ORDER_INIT });
-export const onOrderBurgerError = (error) => ({ type: actionTypes.ORDER_ERR, error });
-export const onOrderBurgerSet = (orderId, order) => ({
-  type: actionTypes.ORDER_SET,
-  orderId,
-  order,
-});
-
-export const onOrdersLoading = () => ({ type: actionTypes.ORDERS_LOADING });
-export const onOrdersInit = () => ({ type: actionTypes.ORDERS_INIT });
-export const onOrdersError = (error) => ({ type: actionTypes.ORDERS_ERR, error });
-export const onOrdersSet = (orders) => ({ type: actionTypes.ORDERS_SET, orders });
-
-// API Action creators
-export const onOrderBurgerSetAPI = (order, token) => async (dispatch) => {
-  dispatch(onOrderBurgerLoading());
-  try {
-    const response = await burgerAPI.setOrder(order, token);
-    const orderId = response.data;
-    dispatch(onOrderBurgerSet(orderId, order));
-  } catch (error) {
-    dispatch(onOrdersError(error));
-  }
+export const onOrderBurgerLoading = () => {
+  return { type: actionTypes.ORDER_LOADING };
+};
+export const onOrderBurgerInit = () => {
+  return { type: actionTypes.ORDER_INIT };
+};
+export const onOrderBurgerError = (error) => {
+  return { type: actionTypes.ORDER_ERR, error };
+};
+export const onOrderBurgerSet = (orderId, order) => {
+  return {
+    type: actionTypes.ORDER_SET,
+    orderId,
+    order,
+  };
 };
 
-export const onOrdersGetAPI = (userId, token) => async (dispatch) => {
-  dispatch(onOrdersLoading());
-  try {
-    const response = await burgerAPI.getOrders(userId, token);
-    const orders = [];
-    for (const key in response.data) {
-      orders.push({
-        ...response.data[key],
-        id: key,
-      });
+export const onOrdersLoading = () => {
+  return { type: actionTypes.ORDERS_LOADING };
+};
+export const onOrdersInit = () => {
+  return { type: actionTypes.ORDERS_INIT };
+};
+export const onOrdersError = (error) => {
+  return { type: actionTypes.ORDERS_ERR, error };
+};
+export const onOrdersSet = (orders) => {
+  return { type: actionTypes.ORDERS_SET, orders };
+};
+
+// API Action creators
+export const onOrderBurgerSetAPI = (order, token) => {
+  return async (dispatch) => {
+    dispatch(onOrderBurgerLoading());
+    try {
+      const response = await burgerAPI.setOrder(order, token);
+      const orderId = response.data;
+      dispatch(onOrderBurgerSet(orderId, order));
+    } catch (error) {
+      dispatch(onOrdersError(error));
     }
-    dispatch(onOrdersSet(orders));
-  } catch (error) {
-    dispatch(onOrdersError(error));
-  }
+  };
+};
+
+export const onOrdersGetAPI = (userId, token) => {
+  return async (dispatch) => {
+    dispatch(onOrdersLoading());
+    try {
+      const response = await burgerAPI.getOrders(userId, token);
+      const orders = [];
+      for (const key in response.data) {
+        orders.push({
+          ...response.data[key],
+          id: key,
+        });
+      }
+      dispatch(onOrdersSet(orders));
+    } catch (error) {
+      dispatch(onOrdersError(error));
+    }
+  };
 };
 
 // Reducer Model

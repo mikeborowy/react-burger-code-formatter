@@ -1,9 +1,9 @@
 import React from 'react';
-import Aux from '../../../hoc/aux/Aux';
-import Button from '../../../common/buttons/button/Button';
+import { Aux } from '../../../hoc/aux/Aux';
+import { Button } from '../../../common/buttons/button/Button';
 import { BUTTONS } from '../../../../constants/buttons';
 
-export const OrderSummary = (props) => {
+export const OrderModal = (props) => {
   const { ingredients, totalPrice, onPurchaseContinue, onPurchaseCancel } = props;
   const renderSummaryList = Object.keys(ingredients).map((ingredient, idx) => {
     return (

@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './modal.scss';
-import Aux from '../../../hoc/aux/Aux';
-import Overlay from '../../../common/overlay/Overlay';
+import { Aux } from '../../../hoc/aux/Aux';
+import { Overlay } from '../../../common/overlay/Overlay';
 
 const propTypes = {
   isOpen: PropTypes.bool,
   onClose: PropTypes.func,
   children: PropTypes.shape({}),
 };
+
 const defaultProps = {
   isOpen: false,
   onClose: () => {},

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Order from './Order/Order';
-import Spinner from '../../common/spinner/Spinner';
+import { Order } from './Order/Order';
+import { Spinner } from '../../common/spinner/Spinner';
 import { onOrdersGetAPI } from '../../../store/reducers/order';
 
 const propTypes = {

@@ -1,5 +1,5 @@
 import burgerLogo from './burger-logo.png';
 
-export default {
+export const IMAGES = {
   logo: burgerLogo,
 };

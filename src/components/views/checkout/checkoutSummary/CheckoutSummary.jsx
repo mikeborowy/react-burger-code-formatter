@@ -1,6 +1,6 @@
 import React from 'react';
 import { Burger } from '../../../common/burger/Burger';
-import Button from '../../../common/buttons/button/Button';
+import { Button } from '../../../common/buttons/button/Button';
 import { BUTTONS } from '../../../../constants/buttons';
 import styles from './checkoutSummary.scss';
 

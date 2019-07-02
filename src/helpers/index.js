@@ -2,7 +2,9 @@ import createBrowserHistory from 'history/createBrowserHistory';
 
 export const history = createBrowserHistory();
 
-export const capitalize = ([first, ...rest]) => first.toUpperCase() + rest.join('').toLowerCase();
+export const capitalize = ([first, ...rest]) => {
+  return first.toUpperCase() + rest.join('').toLowerCase();
+};
 
 export const getDisplayName = (WrappedComponent) => {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
@@ -38,3 +40,15 @@ export const checkValidity = (value, rules) => {
 
   return isValid;
 };
+
+export function setStorage(params) {
+  localStorage.setItem('token', params.token);
+  localStorage.setItem('expirationDate', params.expirationDate);
+  localStorage.setItem('userId', params.userId);
+}
+
+export function clearStorage() {
+  localStorage.removeItem('token');
+  localStorage.removeItem('expirationDate');
+  localStorage.removeItem('userId');
+}

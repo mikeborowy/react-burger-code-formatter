@@ -1,4 +1,5 @@
 import { authAPI } from '../../services/api/auth';
+import { clearStorage, setStorage } from '../../helpers/index';
 
 export const actionTypes = {
   AUTH_START: 'AUTH_START',
@@ -9,22 +10,41 @@ export const actionTypes = {
 };
 
 /** Action Creators */
-export const onAuthStart = () => ({ type: actionTypes.AUTH_START });
-export const onAuthSuccess = (authData) => ({ type: actionTypes.AUTH_SUCCESS, authData });
-export const onAuthFail = (error) => ({ type: actionTypes.AUTH_FAIL, error });
-export const onAuthLogout = () => ({ type: actionTypes.AUTH_LOGOUT });
-
-export const onLogout = () => (dispatch) => {
-  clearStorage();
-  dispatch(onAuthLogout());
-};
-export const onCheckAuthTimeout = (expirationTime) => (dispatch) => {
-  setTimeout(() => {
-    dispatch(onLogout());
-  }, expirationTime * 1000);
+export const onAuthStart = () => {
+  return { type: actionTypes.AUTH_START };
 };
 
-export const onSetAuthRedirectPath = (path) => ({ type: actionTypes.SET_AUTH_REDIRECT_PATH, path });
+export const onAuthSuccess = (authData) => {
+  return { type: actionTypes.AUTH_SUCCESS, authData };
+};
+
+export const onAuthFail = (error) => {
+  return { type: actionTypes.AUTH_FAIL, error };
+};
+
+export const onAuthLogout = () => {
+  return { type: actionTypes.AUTH_LOGOUT };
+};
+
+export const onLogout = () => {
+  return (dispatch) => {
+    clearStorage();
+    dispatch(onAuthLogout());
+  };
+};
+
+export const onCheckAuthTimeout = (expirationTime) => {
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch(onLogout());
+    }, expirationTime * 1000);
+  };
+};
+
+export const onSetAuthRedirectPath = (path) => {
+  return { type: actionTypes.SET_AUTH_REDIRECT_PATH, path };
+};
+
 export const onAuthCheckState = () => {
   return (dispatch) => {
     const token = localStorage.getItem('token');
@@ -44,28 +64,30 @@ export const onAuthCheckState = () => {
 };
 
 /** API Action Creators */
-export const onAuthStartAPI = (email, password, isSignup) => async (dispatch) => {
-  dispatch(onAuthStart());
-  const authData = {
-    email,
-    password,
-    returnSecureToken: true,
-  };
-
-  try {
-    const response = await (isSignup ? authAPI.signUp(authData) : authAPI.signIn(authData));
-    const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
-    const params = {
-      token: response.data.idToken,
-      expirationDate,
-      userId: response.data.email,
+export const onAuthStartAPI = (email, password, isSignup) => {
+  return async (dispatch) => {
+    dispatch(onAuthStart());
+    const authData = {
+      email,
+      password,
+      returnSecureToken: true,
     };
-    setStorage(params);
-    dispatch(onAuthSuccess(response.data));
-    dispatch(onCheckAuthTimeout(response.data.expiresIn));
-  } catch (error) {
-    dispatch(onAuthFail(error));
-  }
+
+    try {
+      const response = await (isSignup ? authAPI.signUp(authData) : authAPI.signIn(authData));
+      const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
+      const params = {
+        token: response.data.idToken,
+        expirationDate,
+        userId: response.data.email,
+      };
+      setStorage(params);
+      dispatch(onAuthSuccess(response.data));
+      dispatch(onCheckAuthTimeout(response.data.expiresIn));
+    } catch (error) {
+      dispatch(onAuthFail(error));
+    }
+  };
 };
 
 /** Reducer */
@@ -116,16 +138,3 @@ export const auth = (state = initialState, action) => {
       return state;
   }
 };
-
-/** Helpers */
-function setStorage(params) {
-  localStorage.setItem('token', params.token);
-  localStorage.setItem('expirationDate', params.expirationDate);
-  localStorage.setItem('userId', params.userId);
-}
-
-function clearStorage() {
-  localStorage.removeItem('token');
-  localStorage.removeItem('expirationDate');
-  localStorage.removeItem('userId');
-}
