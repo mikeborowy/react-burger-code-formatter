@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './burger.scss';
-import Ingredient from './ingredient/Ingredient';
+import { Ingredient } from './ingredient/Ingredient';
 import { INGREDIENTS } from '../../../constants/ingredients';
 
 /**
