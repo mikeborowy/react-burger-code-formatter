@@ -18,13 +18,14 @@
     "node": true
   },
   "rules": {
-    "arrowParens": "always",
+    "arrow-parens": ["error", "always"],
     "arrow-body-style": ["error", "always"],
-    "class-methods-use-this": "warn",
+    "class-methods-use-this": "off",
     "consistent-return": "off",
     "eol-last": "warn",
     "guard-for-in": "off",
     "indent": "off",
+    "implicit-arrow-linebreak": ["error", "beside"],
     "import/prefer-default-export": "off",
     "import/no-default-export": "error",
     "max-len": [
@@ -46,12 +47,12 @@
     "no-debugger": "error",
     "no-lone-blocks": "warn",
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
-    "no-prototype-builtins": "warn",
+    "no-prototype-builtins": "off",
     "no-shadow": "off",
     "no-restricted-syntax": ["error", "BinaryExpression[operator='in']"],
     "no-trailing-spaces": "error",
-    "no-unused-vars": "warn",
-    "no-underscore-dangle": "warn",
+    "no-unused-vars": "off",
+    "no-underscore-dangle": "off",
     "no-use-before-define": "warn",
     "no-var": "error",
     "prefer-destructuring": [
@@ -96,7 +97,16 @@
         "extensions": [".js", ".jsx"]
       }
     ],
-    "react/prop-types": "warn",
+    "react/prop-types": "off",
     "react/sort-comp": "off"
+  },
+  "globals": {
+    "React": true,
+    "document": true,
+    "window": true,
+    "jQuery": true,
+    "$": true,
+    "localStorage": true,
+    "fetch": true
   }
 }

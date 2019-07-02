@@ -52,17 +52,17 @@
     "lint": "eslint 'src/components/**/*.{js,jsx}' --fix",
     "lint-w": "esw -w 'src/components/**/*.{js,jsx}'"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "**/*.js": [
       "eslint --fix",
       "prettier-eslint --write",
       "git add"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "jest": {
     "collectCoverageFrom": [
