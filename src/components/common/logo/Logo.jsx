@@ -1,6 +1,5 @@
 import React from 'react';
-
-import images from '../../../assets/images/index';
+import { IMAGES } from '../../../assets/images/index';
 import styles from './logo.scss';
 
 export const Logo = (props) => {
@@ -12,7 +11,7 @@ export const Logo = (props) => {
         height,
       }}
     >
-      <img src={images.logo} alt="MyBurger" />
+      <img src={IMAGES.logo} alt="MyBurger" />
     </div>
   );
 };

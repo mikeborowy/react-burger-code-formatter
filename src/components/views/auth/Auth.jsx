@@ -9,9 +9,9 @@ import {
   onAuthFail,
   onSetAuthRedirectPath,
 } from '../../../store/reducers/auth';
-import Input from '../../common/input/Input';
-import Button from '../../common/buttons/button/Button';
-import Spinner from '../../common/spinner/Spinner';
+import { Input } from '../../common/input/Input';
+import { Button } from '../../common/buttons/button/Button';
+import { Spinner } from '../../common/spinner/Spinner';
 import classes from './Auth.css';
 import { BUTTONS } from '../../../constants/buttons';
 import { INPUTS } from '../../../constants/inputs';

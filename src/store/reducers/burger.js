@@ -11,28 +11,38 @@ export const actionTypes = {
 };
 
 // Action creators
-export const onAddIngredient = (ingredientName) => ({
-  type: actionTypes.BURGER_ADD_INGREDIENT,
-  ingredientName,
-});
-export const onRemoveIngredient = (ingredientName) => ({
-  type: actionTypes.BURGER_REMOVE_INGREDIENT,
-  ingredientName,
-});
-export const onSetIngredients = (ingredients) => ({
-  type: actionTypes.BURGER_SET_INGREDIENTS,
-  ingredients,
-});
-export const onIngredientsError = () => ({ type: actionTypes.BURGER_INGREDIENTS_ERR });
+export const onAddIngredient = (ingredientName) => {
+  return {
+    type: actionTypes.BURGER_ADD_INGREDIENT,
+    ingredientName,
+  };
+};
+export const onRemoveIngredient = (ingredientName) => {
+  return {
+    type: actionTypes.BURGER_REMOVE_INGREDIENT,
+    ingredientName,
+  };
+};
+export const onSetIngredients = (ingredients) => {
+  return {
+    type: actionTypes.BURGER_SET_INGREDIENTS,
+    ingredients,
+  };
+};
+export const onIngredientsError = () => {
+  return { type: actionTypes.BURGER_INGREDIENTS_ERR };
+};
 
 // API Action creators
-export const onGetIngredientsAPI = () => async (dispatch) => {
-  try {
-    const response = await burgerAPI.getIngredients();
-    dispatch(onSetIngredients(response.data));
-  } catch (error) {
-    dispatch(onIngredientsError(error));
-  }
+export const onGetIngredientsAPI = () => {
+  return async (dispatch) => {
+    try {
+      const response = await burgerAPI.getIngredients();
+      dispatch(onSetIngredients(response.data));
+    } catch (error) {
+      dispatch(onIngredientsError(error));
+    }
+  };
 };
 
 // Reducer Model

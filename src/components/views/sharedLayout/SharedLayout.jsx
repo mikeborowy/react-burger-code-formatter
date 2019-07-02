@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Aux from '../../hoc/aux/Aux';
 import styles from './sharedLayout.scss';
-import Toolbar from './toolbar/Toolbar';
-import SideMenu from './sideMenu/SideMenu';
+import { Aux } from '../../hoc/aux/Aux';
+import { Toolbar } from './toolbar/Toolbar';
+import { SideMenu } from './sideMenu/SideMenu';
 
 const propTypes = {
   children: PropTypes.object,

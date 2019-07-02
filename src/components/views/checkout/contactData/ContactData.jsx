@@ -5,10 +5,10 @@ import { bindActionCreators } from 'redux';
 import { onOrderBurgerSetAPI } from '../../../../store/reducers/order';
 import styles from './contactData.scss';
 // component/common
-import Button from '../../../common/buttons/button/Button';
-import Input from '../../../common/input/Input';
-import Spinner from '../../../common/spinner/Spinner';
-import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
+import { Button } from '../../../common/buttons/button/Button';
+import { Input } from '../../../common/input/Input';
+import { Spinner } from '../../../common/spinner/Spinner';
+import { withErrorHandler } from '../../../hoc/withErrorHandler/withErrorHandler';
 // constants
 import { BUTTONS } from '../../../../constants/buttons';
 import { ORDER_FORM } from '../../../../constants/stateInit';

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './buildControls.scss';
-import BuilderControl from './buildControl/BuildControl';
+import { BuildControl } from './buildControl/BuildControl';
 import { BUILD_CONTROLS } from '../../../../constants/controls';
 
 export const BuildControls = (props) => {
@@ -32,7 +32,7 @@ export const BuildControls = (props) => {
       },
     };
 
-    return <BuilderControl {...buildControlProps} />;
+    return <BuildControl {...buildControlProps} />;
   });
 
   return (

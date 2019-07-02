@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import CheckoutSummary from './checkoutSummary/CheckoutSummary';
-import ContactData from './contactData/ContactData';
+import { CheckoutSummary } from './checkoutSummary/CheckoutSummary';
+import { ContactData } from './contactData/ContactData';
 import { ROUTES } from '../../../constants/routes';
 
 const propTypes = {

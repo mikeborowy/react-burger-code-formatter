@@ -21,14 +21,14 @@ import {
 import { onOrderBurgerInit } from '../../../store/reducers/order';
 import { onSetAuthRedirectPath } from '../../../store/reducers/auth';
 // Redux <- BAD: we don't make comments or empty lines to group
-import Aux from '../../hoc/aux/Aux';
-import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import { Aux } from '../../hoc/aux/Aux';
+import { withErrorHandler } from '../../hoc/withErrorHandler/withErrorHandler';
 // Redux <- BAD: we don't make comments or empty lines to group
-import Spinner from '../../common/spinner/Spinner';
+import { Spinner } from '../../common/spinner/Spinner';
 import { Burger } from '../../common/burger/Burger';
-import BuildControls from './buildControls/BuildControls';
-import Modal from '../sharedLayout/modal/Modal';
-import OrderModal from './orderModal/OrderModal';
+import { BuildControls } from './buildControls/BuildControls';
+import { Modal } from '../sharedLayout/modal/Modal';
+import { OrderModal } from './orderModal/OrderModal';
 // Redux <- BAD: we don't make comments or empty lines to group
 // <- BAD: we don't make comments or empty lines to group
 import { ROUTES } from '../../../constants/routes';

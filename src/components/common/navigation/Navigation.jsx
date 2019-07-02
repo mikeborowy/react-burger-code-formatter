@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import classes from './navigation.scss';
-import NavigationItem from './navigationItem/NavigationItem';
+import { NavigationItem } from './navigationItem/NavigationItem';
 import { ROUTES } from '../../../constants/routes';
 
 const NavigationComponent = (props) => {

@@ -7,11 +7,16 @@ import { logger } from '../../store/middlewares/logger';
 // import stateValidator from '../../store/middlewares/stateValidator';
 import { rootReducers } from '../../store/reducers';
 
-export const config = () =>
-  createStore(
+export const config = () => {
+  return createStore(
     rootReducers,
     compose(
       applyMiddleware(reduxThunk, reduxPromise, async, logger),
-      window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (fn) => fn
+      window.__REDUX_DEVTOOLS_EXTENSION__
+        ? window.__REDUX_DEVTOOLS_EXTENSION__()
+        : (fn) => {
+            return fn;
+          }
     )
   );
+};
