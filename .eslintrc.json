@@ -25,7 +25,6 @@
     "eol-last": "warn",
     "guard-for-in": "off",
     "indent": "off",
-    "implicit-arrow-linebreak": ["error", "beside"],
     "import/prefer-default-export": "off",
     "import/no-default-export": "error",
     "max-len": [
