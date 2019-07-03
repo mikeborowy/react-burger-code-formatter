@@ -32,7 +32,13 @@
         "exceptions": ["id"]
       }
     ],
-    "indent": ["error", 2, { "MemberExpression": 0 }],
+    "indent": [
+      "error",
+      2,
+      {
+        "MemberExpression": 0
+      }
+    ],
     "implicit-arrow-linebreak": "off",
     "import/prefer-default-export": "off",
     "import/no-default-export": "error",
@@ -60,16 +66,30 @@
     "no-console": "error",
     "no-debugger": "error",
     "no-lone-blocks": "warn",
-    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 1
+      }
+    ],
     "no-prototype-builtins": "off",
     "no-shadow": "off",
-    "no-restricted-syntax": ["error", "BinaryExpression[operator='in']"],
+    "no-restricted-syntax": [
+      "error",
+      "BinaryExpression[operator='in']"
+    ],
     "no-trailing-spaces": "error",
     "no-unused-vars": "off",
     "no-underscore-dangle": "off",
     "no-use-before-define": "warn",
     "no-var": "error",
-    "object-property-newline": ["error", { "allowMultiplePropertiesPerLine": false }],
+    "object-property-newline": [
+      "error",
+      {
+        "allowMultiplePropertiesPerLine": false
+      }
+    ],
     "object-curly-newline": [
       "error",
       {
@@ -99,7 +119,10 @@
         "enforceForRenamedProperties": false
       }
     ],
-    "semi": ["warn", "always"],
+    "semi": [
+      "warn",
+      "always"
+    ],
     "jsx-quotes": "warn",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/href-no-hash": "off",
@@ -122,10 +145,18 @@
     "react/jsx-filename-extension": [
       "warn",
       {
-        "extensions": [".js", ".jsx"]
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
       }
     ],
-    "react/jsx-max-props-per-line": ["warn", { "maximum": 1 }],
+    "react/jsx-max-props-per-line": [
+      "warn",
+      {
+        "maximum": 1
+      }
+    ],
     "react/jsx-indent": [
       "warn",
       2,
@@ -133,8 +164,6 @@
         "indentLogicalExpressions": true
       }
     ],
-    "react/prop-types": "off",
-    "react/sort-comp": "off",
     "react/sort-prop-types": [
       "warn",
       {
@@ -144,7 +173,10 @@
         "sortShapeProp": true,
         "noSortAlphabetically": false
       }
-    ]
+    ],
+    "react/prop-types": "off",
+    "react/sort-comp": "off"
+
   },
   "globals": {
     "React": true,
