@@ -19,11 +19,19 @@
   },
   "rules": {
     "arrow-parens": ["error", "always"],
-    "arrow-body-style": ["error", "as-needed"],
+    "arrow-body-style": ["error", "always"],
+    "brace-style": ["error", "stroustrup"],
     "class-methods-use-this": "off",
     "consistent-return": "off",
     "eol-last": "warn",
     "guard-for-in": "off",
+    "id-length": [
+      "error",
+      {
+        "min": 3 ,
+        "exceptions": ["id"]
+      }
+    ],
     "indent": ["error", 2, { "MemberExpression": 0 }],
     "implicit-arrow-linebreak": "off",
     "import/prefer-default-export": "off",
@@ -40,6 +48,12 @@
         "ignoreStrings": true,
         "ignoreTemplateLiterals": true,
         "ignoreRegExpLiterals": true
+      }
+    ],
+    "newline-per-chained-call": [
+      "error",
+      {
+         "ignoreChainWithDepth": 2
       }
     ],
     "no-alert": "error",
@@ -63,7 +77,8 @@
           "minProperties": 1
         },
         "ObjectPattern": {
-           "multiline": true
+           "multiline": true,
+           "minProperties": 1
         }
       }
     ],
@@ -109,8 +124,26 @@
         "extensions": [".js", ".jsx"]
       }
     ],
+    "react/jsx-max-props-per-line": ["warn", { "maximum": 1 }],
+    "react/jsx-indent": [
+      "warn",
+      2,
+      {
+        "indentLogicalExpressions": true
+      }
+    ],
     "react/prop-types": "off",
-    "react/sort-comp": "off"
+    "react/sort-comp": "off",
+    "react/sort-prop-types": [
+      "warn",
+      {
+        "callbacksLast": true,
+        "ignoreCase": true,
+        "requiredFirst": true,
+        "sortShapeProp": true,
+        "noSortAlphabetically": false
+      }
+    ]
   },
   "globals": {
     "React": true,
