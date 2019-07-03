@@ -9,7 +9,7 @@
       "experimentalObjectRestSpread": true
     }
   },
-  "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
+  "extends": ["airbnb"],
   "env": {
     "browser": true,
     "commonjs": true,
@@ -19,12 +19,13 @@
   },
   "rules": {
     "arrow-parens": ["error", "always"],
-    "arrow-body-style": ["error", "always"],
+    "arrow-body-style": ["error", "as-needed"],
     "class-methods-use-this": "off",
     "consistent-return": "off",
     "eol-last": "warn",
     "guard-for-in": "off",
-    "indent": "off",
+    "indent": ["error", 2, { "MemberExpression": 0 }],
+    "implicit-arrow-linebreak": "off",
     "import/prefer-default-export": "off",
     "import/no-default-export": "error",
     "max-len": [
@@ -54,6 +55,18 @@
     "no-underscore-dangle": "off",
     "no-use-before-define": "warn",
     "no-var": "error",
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": {
+          "multiline": true,
+          "minProperties": 1
+        },
+        "ObjectPattern": {
+           "multiline": true
+        }
+      }
+    ],
     "prefer-destructuring": [
       "error",
       {
