@@ -175,12 +175,8 @@ class BurgerBuilderComponent extends Component {
      * We do method chaining with next line after first method
      */
     const sum = Object.keys(ingredients)
-      .map((ingredient) => {
-        return ingredients[ingredient];
-      })
-      .reduce((sum, item) => {
-        return sum + item;
-      }, 0);
+    .map((ingredient) => ingredients[ingredient])
+    .reduce((sum, item) => sum + item, 0);
 
     return sum > 0;
   };
@@ -300,21 +296,18 @@ class BurgerBuilderComponent extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = (state) => ({
     ingredients: state.burger.ingredients,
     isAuth: state.auth.token !== null,
     isError: state.burger.error,
     totalPrice: state.burger.totalPrice,
-  };
-};
+  });
 
 /**
  * Use 'bindActionCreators' to wrap all
  * Action Creators
  */
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(
+const mapDispatchToProps = (dispatch) => bindActionCreators(
     {
       onAddIngredient,
       onGetIngredientsAPI,
@@ -324,7 +317,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     dispatch
   );
-};
 
 /**
  * Use named exports for components
@@ -334,7 +326,7 @@ const mapDispatchToProps = (dispatch) => {
  */
 export const BurgerBuilder = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(BurgerBuilderComponent);
 
 /**
