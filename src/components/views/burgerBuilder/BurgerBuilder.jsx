@@ -83,9 +83,8 @@ class BurgerBuilderComponent extends Component {
    * to it (unlike in this example)
    */
   state = {
-    isPurchasing: false,
-    isLoading: false,
-  };
+ isPurchasing: false, isLoading: false 
+};
 
   constructor(props) {
     super(props);
