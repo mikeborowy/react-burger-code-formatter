@@ -69,6 +69,7 @@
     "no-underscore-dangle": "off",
     "no-use-before-define": "warn",
     "no-var": "error",
+    "object-property-newline": ["error", { "allowMultiplePropertiesPerLine": false }],
     "object-curly-newline": [
       "error",
       {
