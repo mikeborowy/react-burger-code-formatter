@@ -29,9 +29,7 @@ export class OrdersComponent extends Component {
     if (isLoading) {
       return <Spinner />;
     }
-    return orders.map((order) => {
-      return <Order key={order.id} ingredients={order.ingredients} totalPrice={order.totalPrice} />;
-    });
+    return orders.map((order) => <Order key={order.id} ingredients={order.ingredients} totalPrice={order.totalPrice} />);
   };
 
   render() {
@@ -42,25 +40,21 @@ export class OrdersComponent extends Component {
 OrdersComponent.propTypes = propTypes;
 OrdersComponent.defaultProps = defaultProps;
 
-const mapStateToProps = (state) => {
-  return {
-    isLoading: state.order.isLoading,
-    orders: state.order.orders,
-    token: state.auth.token || localStorage.getItem('token'),
-    userId: state.auth.userId || localStorage.getItem('userId'),
-  };
-};
+const mapStateToProps = (state) => ({
+  isLoading: state.order.isLoading,
+  orders: state.order.orders,
+  token: state.auth.token || localStorage.getItem('token'),
+  userId: state.auth.userId || localStorage.getItem('userId'),
+});
 
-const mapDispatchToState = (dispatch) => {
-  return bindActionCreators(
-    {
-      onOrdersGetAPI,
-    },
-    dispatch
-  );
-};
+const mapDispatchToState = (dispatch) => bindActionCreators(
+  {
+    onOrdersGetAPI,
+  },
+  dispatch,
+);
 
 export const Orders = connect(
   mapStateToProps,
-  mapDispatchToState
+  mapDispatchToState,
 )(OrdersComponent);
