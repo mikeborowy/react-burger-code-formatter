@@ -33,13 +33,20 @@ export class SharedLayout extends Component {
   };
 
   render() {
-    const { children } = this.props;
-    const { showSideMenu } = this.state;
+    const {
+      children,
+    } = this.props;
+    const {
+      showSideMenu,
+    } = this.state;
 
     return (
       <Aux>
         <Toolbar onSideMenuToggle={this.sideMenuToggleHandler} />
-        <SideMenu open={showSideMenu} onClose={this.sideMenuCloseHandler} />
+        <SideMenu
+          open={showSideMenu}
+          onClose={this.sideMenuCloseHandler}
+        />
         <main className={styles.main}>{children}</main>
       </Aux>
     );

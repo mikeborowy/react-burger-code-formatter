@@ -31,11 +31,11 @@ const mapDispatchToProps = (dispatch) => {
       onGetIngredientsAPI,
       onSetAuthRedirectPath,
     },
-    dispatch
+    dispatch,
   );
 };
 
 export const BurgerBuilderContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(BurgerBuilder);

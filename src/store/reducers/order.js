@@ -15,13 +15,19 @@ export const actionTypes = {
 
 // Action creators
 export const onOrderBurgerLoading = () => {
-  return { type: actionTypes.ORDER_LOADING };
+  return {
+    type: actionTypes.ORDER_LOADING,
+  };
 };
 export const onOrderBurgerInit = () => {
-  return { type: actionTypes.ORDER_INIT };
+  return {
+    type: actionTypes.ORDER_INIT,
+  };
 };
 export const onOrderBurgerError = (error) => {
-  return { type: actionTypes.ORDER_ERR, error };
+  return {
+    type: actionTypes.ORDER_ERR, error,
+  };
 };
 export const onOrderBurgerSet = (orderId, order) => {
   return {
@@ -32,16 +38,24 @@ export const onOrderBurgerSet = (orderId, order) => {
 };
 
 export const onOrdersLoading = () => {
-  return { type: actionTypes.ORDERS_LOADING };
+  return {
+    type: actionTypes.ORDERS_LOADING,
+  };
 };
 export const onOrdersInit = () => {
-  return { type: actionTypes.ORDERS_INIT };
+  return {
+    type: actionTypes.ORDERS_INIT,
+  };
 };
 export const onOrdersError = (error) => {
-  return { type: actionTypes.ORDERS_ERR, error };
+  return {
+    type: actionTypes.ORDERS_ERR, error,
+  };
 };
 export const onOrdersSet = (orders) => {
-  return { type: actionTypes.ORDERS_SET, orders };
+  return {
+    type: actionTypes.ORDERS_SET, orders,
+  };
 };
 
 // API Action creators
@@ -52,7 +66,8 @@ export const onOrderBurgerSetAPI = (order, token) => {
       const response = await burgerAPI.setOrder(order, token);
       const orderId = response.data;
       dispatch(onOrderBurgerSet(orderId, order));
-    } catch (error) {
+    }
+    catch (error) {
       dispatch(onOrdersError(error));
     }
   };
@@ -71,7 +86,8 @@ export const onOrdersGetAPI = (userId, token) => {
         });
       }
       dispatch(onOrdersSet(orders));
-    } catch (error) {
+    }
+    catch (error) {
       dispatch(onOrdersError(error));
     }
   };
@@ -88,56 +104,56 @@ const inistialState = {
 // Reducer
 export const order = (state = inistialState, action) => {
   switch (action.type) {
-    case actionTypes.ORDER_INIT:
-      return {
-        ...state,
-        isPurchased: false,
-      };
+  case actionTypes.ORDER_INIT:
+    return {
+      ...state,
+      isPurchased: false,
+    };
 
-    case actionTypes.ORDER_INIT_API:
-      return {
-        ...state,
-        isLoading: true,
-      };
+  case actionTypes.ORDER_INIT_API:
+    return {
+      ...state,
+      isLoading: true,
+    };
 
-    case actionTypes.ORDER_SET: {
-      const newOrder = {
-        id: action.orderId,
-        ...action.order,
-      };
+  case actionTypes.ORDER_SET: {
+    const newOrder = {
+      id: action.orderId,
+      ...action.order,
+    };
 
-      return {
-        ...state,
-        isLoading: false,
-        isPurchased: true,
-        orders: [...state.orders, newOrder],
-      };
-    }
-    case actionTypes.ORDER_ERR:
-      return {
-        ...state,
-        isLoading: false,
-      };
+    return {
+      ...state,
+      isLoading: false,
+      isPurchased: true,
+      orders: [...state.orders, newOrder],
+    };
+  }
+  case actionTypes.ORDER_ERR:
+    return {
+      ...state,
+      isLoading: false,
+    };
 
-    case actionTypes.ORDERS_LOADING:
-      return {
-        ...state,
-        isPurchased: true,
-      };
+  case actionTypes.ORDERS_LOADING:
+    return {
+      ...state,
+      isPurchased: true,
+    };
 
-    case actionTypes.ORDERS_SET:
-      return {
-        ...state,
-        orders: action.orders,
-      };
+  case actionTypes.ORDERS_SET:
+    return {
+      ...state,
+      orders: action.orders,
+    };
 
-    case actionTypes.ORDERS_ERR:
-      return {
-        ...state,
-        isLoading: false,
-      };
+  case actionTypes.ORDERS_ERR:
+    return {
+      ...state,
+      isLoading: false,
+    };
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };

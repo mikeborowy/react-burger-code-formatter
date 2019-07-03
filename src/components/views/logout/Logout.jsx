@@ -6,7 +6,9 @@ import { onLogout } from '../../../store/reducers/auth';
 
 class LogoutComponent extends Component {
   componentDidMount() {
-    const { onLogout } = this.props;
+    const {
+      onLogout,
+    } = this.props;
     onLogout();
   }
 
@@ -20,11 +22,11 @@ const mapDispatchToProps = (dispatch) => {
     {
       onLogout,
     },
-    dispatch
+    dispatch,
   );
 };
 
 export const Logout = connect(
   null,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(LogoutComponent);

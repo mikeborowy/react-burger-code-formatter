@@ -5,9 +5,9 @@ import { Aux } from '../../../hoc/aux/Aux';
 import { Overlay } from '../../../common/overlay/Overlay';
 
 const propTypes = {
+  children: PropTypes.shape({}),
   isOpen: PropTypes.bool,
   onClose: PropTypes.func,
-  children: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -17,7 +17,9 @@ const defaultProps = {
 };
 
 export const Modal = (props) => {
-  const { isOpen, onClose, children } = props;
+  const {
+    isOpen, onClose, children,
+  } = props;
   let style = {};
   style = {
     ...style,
@@ -27,8 +29,14 @@ export const Modal = (props) => {
 
   return (
     <Aux>
-      <Overlay isOpen={isOpen} onClose={onClose} />
-      <div className={styles.modal} style={style}>
+      <Overlay
+        isOpen={isOpen}
+        onClose={onClose}
+      />
+      <div
+        className={styles.modal}
+        style={style}
+      >
         {children}
       </div>
     </Aux>

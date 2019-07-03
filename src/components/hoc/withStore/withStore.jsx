@@ -7,7 +7,10 @@ export const withStore = (WrappedComponent, initialState = {}) => {
   class WithStore extends Component {
     render() {
       return (
-        <Provider store={configStore(initialState)} {...this.state}>
+        <Provider
+          store={configStore(initialState)}
+          {...this.state}
+        >
           <WrappedComponent />
         </Provider>
       );

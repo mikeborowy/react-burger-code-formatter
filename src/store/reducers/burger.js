@@ -30,7 +30,9 @@ export const onSetIngredients = (ingredients) => {
   };
 };
 export const onIngredientsError = () => {
-  return { type: actionTypes.BURGER_INGREDIENTS_ERR };
+  return {
+    type: actionTypes.BURGER_INGREDIENTS_ERR,
+  };
 };
 
 // API Action creators
@@ -39,7 +41,8 @@ export const onGetIngredientsAPI = () => {
     try {
       const response = await burgerAPI.getIngredients();
       dispatch(onSetIngredients(response.data));
-    } catch (error) {
+    }
+    catch (error) {
       dispatch(onIngredientsError(error));
     }
   };
@@ -56,44 +59,44 @@ const inistialState = {
 // Reducer
 export const burger = (state = inistialState, action) => {
   switch (action.type) {
-    case actionTypes.BURGER_ADD_INGREDIENT:
-      return {
-        ...state,
-        isBuilding: true,
-        ingredients: {
-          ...state.ingredients,
-          [action.ingredientName]: state.ingredients[action.ingredientName] + 1,
-        },
-        totalPrice: state.totalPrice + INGREDIENTS_PRICES[action.ingredientName.toUpperCase()],
-      };
-    case actionTypes.BURGER_REMOVE_INGREDIENT:
-      return {
-        ...state,
-        ingredients: {
-          ...state.ingredients,
-          [action.ingredientName]: state.ingredients[action.ingredientName] - 1,
-        },
-        totalPrice: state.totalPrice - INGREDIENTS_PRICES[action.ingredientName.toUpperCase()],
-      };
-    case actionTypes.BURGER_SET_INGREDIENTS:
-      return {
-        ...state,
-        isBuilding: false,
-        ingredients: {
-          salad: action.ingredients.salad,
-          bacon: action.ingredients.bacon,
-          cheese: action.ingredients.cheese,
-          meat: action.ingredients.meat,
-        },
-        totalPrice: 0,
-        error: false,
-      };
-    case actionTypes.BURGER_INGREDIENTS_ERR:
-      return {
-        ...state,
-        error: true,
-      };
-    default:
-      return state;
+  case actionTypes.BURGER_ADD_INGREDIENT:
+    return {
+      ...state,
+      isBuilding: true,
+      ingredients: {
+        ...state.ingredients,
+        [action.ingredientName]: state.ingredients[action.ingredientName] + 1,
+      },
+      totalPrice: state.totalPrice + INGREDIENTS_PRICES[action.ingredientName.toUpperCase()],
+    };
+  case actionTypes.BURGER_REMOVE_INGREDIENT:
+    return {
+      ...state,
+      ingredients: {
+        ...state.ingredients,
+        [action.ingredientName]: state.ingredients[action.ingredientName] - 1,
+      },
+      totalPrice: state.totalPrice - INGREDIENTS_PRICES[action.ingredientName.toUpperCase()],
+    };
+  case actionTypes.BURGER_SET_INGREDIENTS:
+    return {
+      ...state,
+      isBuilding: false,
+      ingredients: {
+        salad: action.ingredients.salad,
+        bacon: action.ingredients.bacon,
+        cheese: action.ingredients.cheese,
+        meat: action.ingredients.meat,
+      },
+      totalPrice: 0,
+      error: false,
+    };
+  case actionTypes.BURGER_INGREDIENTS_ERR:
+    return {
+      ...state,
+      error: true,
+    };
+  default:
+    return state;
   }
 };

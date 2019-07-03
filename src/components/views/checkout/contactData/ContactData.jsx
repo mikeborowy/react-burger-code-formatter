@@ -18,11 +18,11 @@ import { checkValidity } from '../../../../helpers/index';
 import { burgerAPI } from '../../../../services/api/burger';
 
 const propTypes = {
-  userId: PropTypes.number,
   ingredients: PropTypes.shape({}),
-  totalPrice: PropTypes.number,
-  onOrderBurgerSetAPI: PropTypes.func,
   token: PropTypes.string,
+  totalPrice: PropTypes.number,
+  userId: PropTypes.number,
+  onOrderBurgerSetAPI: PropTypes.func,
 };
 
 const defaultProps = {
@@ -39,8 +39,12 @@ class ContactDataComponent extends Component {
 
   orderHandler = (evt) => {
     evt.preventDefault();
-    const { orderForm } = this.state;
-    const { userId, ingredients, totalPrice, onOrderBurgerSetAPI, token } = this.props;
+    const {
+      orderForm,
+    } = this.state;
+    const {
+      userId, ingredients, totalPrice, onOrderBurgerSetAPI, token,
+    } = this.props;
 
     const formData = {};
     for (const formElementIdentifier in orderForm) {
@@ -56,7 +60,9 @@ class ContactDataComponent extends Component {
   };
 
   inputChangedHandler = (event, inputIdentifier) => {
-    const { orderForm } = this.state;
+    const {
+      orderForm,
+    } = this.state;
     const updatedOrderForm = {
       ...orderForm,
     };
@@ -67,7 +73,7 @@ class ContactDataComponent extends Component {
     updatedFormElement.value = event.target.value;
     updatedFormElement.valid = checkValidity(
       updatedFormElement.value,
-      updatedFormElement.validation
+      updatedFormElement.validation,
     );
     updatedFormElement.touched = true;
     updatedOrderForm[inputIdentifier] = updatedFormElement;
@@ -84,8 +90,12 @@ class ContactDataComponent extends Component {
 
   renderForm = () => {
     const formElementsArray = [];
-    const { orderForm } = this.state;
-    const { isLoading } = this.props;
+    const {
+      orderForm,
+    } = this.state;
+    const {
+      isLoading,
+    } = this.props;
 
     for (const key in orderForm) {
       formElementsArray.push({
@@ -118,7 +128,10 @@ class ContactDataComponent extends Component {
     return (
       <form onSubmit={this.orderHandler}>
         {inputs}
-        <Button type={BUTTONS.SUCCESS} onClick={this.orderHandler}>
+        <Button
+          type={BUTTONS.SUCCESS}
+          onClick={this.orderHandler}
+        >
           Order
         </Button>
       </form>
@@ -155,11 +168,11 @@ const mapDispatchToProps = (dispatch) => {
     {
       onOrderBurgerSetAPI,
     },
-    dispatch
+    dispatch,
   );
 };
 
 export const ContactData = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ContactDataWithError);

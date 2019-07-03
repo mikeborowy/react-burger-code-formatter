@@ -5,7 +5,9 @@ import { BUTTONS } from '../../../../constants/buttons';
 import styles from './checkoutSummary.scss';
 
 export const CheckoutSummary = (props) => {
-  const { ingredients, onCheckoutCancel, onCheckoutContinue } = props;
+  const {
+    ingredients, onCheckoutCancel, onCheckoutContinue,
+  } = props;
   return (
     <div className={styles.checkoutSummary}>
       <h1>We hope it tastes well</h1>
@@ -17,10 +19,16 @@ export const CheckoutSummary = (props) => {
       >
         <Burger ingredients={ingredients} />
       </div>
-      <Button type={BUTTONS.DANGER} onClick={onCheckoutCancel}>
+      <Button
+        type={BUTTONS.DANGER}
+        onClick={onCheckoutCancel}
+      >
         Cancel
       </Button>
-      <Button type={BUTTONS.SUCCESS} onClick={onCheckoutContinue}>
+      <Button
+        type={BUTTONS.SUCCESS}
+        onClick={onCheckoutContinue}
+      >
         Continue
       </Button>
     </div>

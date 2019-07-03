@@ -4,8 +4,11 @@ import { Button } from '../../../common/buttons/button/Button';
 import { BUTTONS } from '../../../../constants/buttons';
 
 export const OrderModal = (props) => {
-  const { ingredients, totalPrice, onPurchaseContinue, onPurchaseCancel } = props;
-  const renderSummaryList = Object.keys(ingredients).map((ingredient, idx) => {
+  const {
+    ingredients, totalPrice, onPurchaseContinue, onPurchaseCancel,
+  } = props;
+  const renderSummaryList = Object.keys(ingredients)
+  .map((ingredient, idx) => {
     return (
       <li key={`ing-${idx * Math.random()}`}>
         <span
@@ -13,7 +16,8 @@ export const OrderModal = (props) => {
             textTransform: 'capitalize',
           }}
         >
-          {ingredient}:
+          {ingredient}
+:
         </span>
         {` ${ingredients[ingredient]}`}
       </li>
@@ -26,13 +30,22 @@ export const OrderModal = (props) => {
       <p>A delicious burger with:</p>
       <ul>{renderSummaryList}</ul>
       <p>
-        <strong>Total Price: {totalPrice.toFixed(2)}</strong>
+        <strong>
+Total Price:
+          {totalPrice.toFixed(2)}
+        </strong>
       </p>
       <p>Continue to checkout?</p>
-      <Button type={BUTTONS.DANGER} onClick={onPurchaseCancel}>
+      <Button
+        type={BUTTONS.DANGER}
+        onClick={onPurchaseCancel}
+      >
         Cancel
       </Button>
-      <Button type={BUTTONS.SUCCESS} onClick={onPurchaseContinue}>
+      <Button
+        type={BUTTONS.SUCCESS}
+        onClick={onPurchaseContinue}
+      >
         Continue
       </Button>
     </Aux>

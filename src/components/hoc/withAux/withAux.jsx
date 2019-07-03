@@ -4,7 +4,12 @@ import { getDisplayName } from '../../../helpers/index';
 export const withAux = (WrappedComponent) => {
   class WithAux extends Component {
     render() {
-      return <WrappedComponent {...this.props} {...this.state} />;
+      return (
+        <WrappedComponent
+          {...this.props}
+          {...this.state}
+        />
+      );
     }
   }
 

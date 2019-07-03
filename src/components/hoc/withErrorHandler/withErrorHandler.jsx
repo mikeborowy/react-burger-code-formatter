@@ -29,7 +29,7 @@ export const withErrorHandler = (WrappedComponent, axios) => {
           this.setState({
             error,
           });
-        }
+        },
       );
     }
 
@@ -49,10 +49,15 @@ export const withErrorHandler = (WrappedComponent, axios) => {
     };
 
     render() {
-      const { error } = this.state;
+      const {
+        error,
+      } = this.state;
       return (
         <Aux>
-          <Modal isOpen={error} onModalClose={this.errorConfirmedHandler}>
+          <Modal
+            isOpen={error}
+            onModalClose={this.errorConfirmedHandler}
+          >
             {error ? error.message : null}
           </Modal>
           <WrappedComponent {...this.props} />

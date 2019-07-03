@@ -54,8 +54,8 @@ class BurgerBuilderComponent extends Component {
     onAddIngredient: PropTypes.func,
     onGetIngredientsAPI: PropTypes.func,
     onOrderBurgerInit: PropTypes.func,
-    onSetAuthRedirectPath: PropTypes.func,
     onRemoveIngredient: PropTypes.func,
+    onSetAuthRedirectPath: PropTypes.func,
   };
 
   /**
@@ -99,7 +99,9 @@ class BurgerBuilderComponent extends Component {
    * All lifecycle methods are right after state or constructor
    */
   componentDidMount() {
-    const { onGetIngredientsAPI } = this.props;
+    const {
+      onGetIngredientsAPI,
+    } = this.props;
     onGetIngredientsAPI();
     window.addEventListener('resize', this.handleResizeArrow);
   }
@@ -138,7 +140,9 @@ class BurgerBuilderComponent extends Component {
    * We don't desctucture objects in method brackets
    */
 
-  badExampleFunction = ({ param1, param2, param3 }) => {
+  badExampleFunction = ({
+    param1, param2, param3,
+  }) => {
     /** Do something */
   };
 
@@ -148,7 +152,9 @@ class BurgerBuilderComponent extends Component {
    */
 
   handlePurchase = () => {
-    const { isAuth, history, onSetAuthRedirectPath } = this.props;
+    const {
+      isAuth, history, onSetAuthRedirectPath,
+    } = this.props;
     if (!isAuth) {
       onSetAuthRedirectPath(ROUTES.CHECKOUT.LINK);
       history.push(ROUTES.AUTH.LINK);
@@ -159,7 +165,9 @@ class BurgerBuilderComponent extends Component {
   };
 
   handleContinuePurchase = () => {
-    const { history, onOrderBurgerInit } = this.props;
+    const {
+      history, onOrderBurgerInit,
+    } = this.props;
     onOrderBurgerInit();
     history.push(ROUTES.CHECKOUT.LINK);
   };
@@ -175,8 +183,12 @@ class BurgerBuilderComponent extends Component {
      * We do method chaining with next line after first method
      */
     const sum = Object.keys(ingredients)
-    .map((ingredient) => ingredients[ingredient])
-    .reduce((sum, item) => sum + item, 0);
+    .map((ingredient) => {
+      return ingredients[ingredient];
+    })
+    .reduce((sum, item) => {
+      return sum + item;
+    }, 0);
 
     return sum > 0;
   };
@@ -186,7 +198,9 @@ class BurgerBuilderComponent extends Component {
    * with 'is' prefix
    */
   isDisabled = () => {
-    const { ingredients } = this.props;
+    const {
+      ingredients,
+    } = this.props;
     const disabledInfo = {
       ...ingredients,
     };
@@ -202,8 +216,12 @@ class BurgerBuilderComponent extends Component {
    * use helper method with 'render' prefix in name
    */
   renderSummaryModal = () => {
-    const { ingredients, totalPrice } = this.props;
-    const { isPurchasing } = this.state;
+    const {
+      ingredients, totalPrice,
+    } = this.props;
+    const {
+      isPurchasing,
+    } = this.state;
     /**
      * If component has more than 3 props you can place
      * them in object with 'propsFor' prefix
@@ -220,7 +238,10 @@ class BurgerBuilderComponent extends Component {
        * If component has more than one prop
        * separate them by using next line
        */
-      <Modal isOpen={isPurchasing} onClose={this.handleCancelPurchase}>
+      <Modal
+        isOpen={isPurchasing}
+        onClose={this.handleCancelPurchase}
+      >
         <OrderModal {...propsForOrderModal} />
       </Modal>
     );
@@ -230,7 +251,9 @@ class BurgerBuilderComponent extends Component {
    * Return component or null
    */
   renderApetizers = () => {
-    const { isLoading } = this.state;
+    const {
+      isLoading,
+    } = this.state;
 
     if (!isLoading) {
       return <div>{/* List of apetizers... */}</div>;
@@ -240,7 +263,10 @@ class BurgerBuilderComponent extends Component {
   };
 
   renderBurger = () => {
-    const { ingredients, totalPrice, isError, onAddIngredient, onRemoveIngredient } = this.props;
+    const {
+      ingredients, totalPrice, isError, onAddIngredient, onRemoveIngredient,
+    } = this.props;
+
     const propsForBurger = {
       ingredients,
     };
@@ -296,18 +322,21 @@ class BurgerBuilderComponent extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => {
+  return {
     ingredients: state.burger.ingredients,
     isAuth: state.auth.token !== null,
     isError: state.burger.error,
     totalPrice: state.burger.totalPrice,
-  });
+  };
+};
 
 /**
  * Use 'bindActionCreators' to wrap all
  * Action Creators
  */
-const mapDispatchToProps = (dispatch) => bindActionCreators(
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
     {
       onAddIngredient,
       onGetIngredientsAPI,
@@ -315,8 +344,9 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(
       onRemoveIngredient,
       onSetAuthRedirectPath,
     },
-    dispatch
+    dispatch,
   );
+};
 
 /**
  * Use named exports for components

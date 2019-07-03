@@ -5,7 +5,9 @@ import { NavigationItem } from './navigationItem/NavigationItem';
 import { ROUTES } from '../../../constants/routes';
 
 const NavigationComponent = (props) => {
-  const { isAuth } = props;
+  const {
+    isAuth,
+  } = props;
   const renderAuth = () => {
     if (isAuth) {
       return (
@@ -20,7 +22,10 @@ const NavigationComponent = (props) => {
 
   return (
     <ul className={classes.navigation}>
-      <NavigationItem link={ROUTES.BUILDER.LINK} exact>
+      <NavigationItem
+        link={ROUTES.BUILDER.LINK}
+        exact
+      >
         {ROUTES.BUILDER.NAME}
       </NavigationItem>
       {renderAuth()}

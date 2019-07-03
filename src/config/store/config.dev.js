@@ -14,9 +14,9 @@ export const config = () => {
       applyMiddleware(reduxThunk, reduxPromise, async, logger),
       window.__REDUX_DEVTOOLS_EXTENSION__
         ? window.__REDUX_DEVTOOLS_EXTENSION__()
-        : (fn) => {
-            return fn;
-          }
-    )
+        : (func) => {
+          return func;
+        },
+    ),
   );
 };

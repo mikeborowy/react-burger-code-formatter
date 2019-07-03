@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const GOOGLE = {
-  KEY: `AIzaSyB0W8KF7UKhGF_-aRvWpd4UNigLi0AH9Bs`,
-  SIGN_UP: `signupNewUser`,
-  SING_IN: `verifyPassword`,
+  KEY: 'AIzaSyB0W8KF7UKhGF_-aRvWpd4UNigLi0AH9Bs',
+  SIGN_UP: 'signupNewUser',
+  SING_IN: 'verifyPassword',
 };
 
 const google = axios.create({

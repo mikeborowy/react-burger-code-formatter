@@ -8,7 +8,8 @@ export const withAsync = (importedComponent) => {
       };
 
       componentDidMount() {
-        importedComponent().then((module) => {
+        importedComponent()
+        .then((module) => {
           const component = module.hasOwnProperty('default') ? module.default : module[name];
 
           this.setState({
@@ -18,7 +19,9 @@ export const withAsync = (importedComponent) => {
       }
 
       render() {
-        const { component } = this.state;
+        const {
+          component,
+        } = this.state;
         const Component = component;
         return Component ? <Component {...this.props} /> : null;
       }

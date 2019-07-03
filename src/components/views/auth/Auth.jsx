@@ -53,7 +53,9 @@ class AuthComponent extends Component {
   };
 
   componentDidMount() {
-    const { authRedirectPath, isBuilding, onSetAuthRedirectPath } = this.props;
+    const {
+      authRedirectPath, isBuilding, onSetAuthRedirectPath,
+    } = this.props;
 
     if (!isBuilding && authRedirectPath !== '/') {
       onSetAuthRedirectPath('/');
@@ -61,7 +63,9 @@ class AuthComponent extends Component {
   }
 
   inputChangedHandler = (evt, controlName) => {
-    const { controls } = this.state;
+    const {
+      controls,
+    } = this.state;
     const updatedControls = {
       ...controls,
       [controlName]: {
@@ -77,8 +81,12 @@ class AuthComponent extends Component {
   };
 
   submitHandler = (event) => {
-    const { isAuth, onAuthStartAPI } = this.props;
-    const { controls } = this.state;
+    const {
+      isAuth, onAuthStartAPI,
+    } = this.props;
+    const {
+      controls,
+    } = this.state;
     event.preventDefault();
     onAuthStartAPI(controls.email.value, controls.password.value, isAuth);
   };
@@ -92,8 +100,12 @@ class AuthComponent extends Component {
   };
 
   render() {
-    const { isLoading, error, isAuth, authRedirectPath } = this.props;
-    const { controls } = this.state;
+    const {
+      isLoading, error, isAuth, authRedirectPath,
+    } = this.props;
+    const {
+      controls,
+    } = this.state;
     const formElementsArray = [];
     for (const key in controls) {
       formElementsArray.push({
@@ -143,8 +155,13 @@ class AuthComponent extends Component {
           {form}
           <Button btnType={BUTTONS.SUCCESS}>SUBMIT</Button>
         </form>
-        <Button onClick={this.switchAuthModeHandler} btnType={BUTTONS.DANGER}>
-          SWITCH TO {isAuth ? AUTH_STATUS.SIGNIN : AUTH_STATUS.SIGNUP}
+        <Button
+          onClick={this.switchAuthModeHandler}
+          btnType={BUTTONS.DANGER}
+        >
+          SWITCH TO
+          {' '}
+          {isAuth ? AUTH_STATUS.SIGNIN : AUTH_STATUS.SIGNUP}
         </Button>
       </div>
     );
@@ -170,11 +187,11 @@ const mapDispatchToProps = (dispatch) => {
       onAuthFail,
       onSetAuthRedirectPath,
     },
-    dispatch
+    dispatch,
   );
 };
 
 export const Auth = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(AuthComponent);

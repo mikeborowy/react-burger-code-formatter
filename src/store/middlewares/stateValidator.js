@@ -1,7 +1,9 @@
 import tv4 from 'tv4';
 import stateSchema from '../../constants/stateSchema';
 
-export const stateValidator = ({ dispatch, getState }) => {
+export const stateValidator = ({
+  dispatch, getState,
+}) => {
   return (next) => {
     return (action) => {
       next(action);

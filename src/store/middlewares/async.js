@@ -1,4 +1,6 @@
-export const async = ({ dispatch }) => {
+export const async = ({
+  dispatch,
+}) => {
   return (next) => {
     return (action) => {
       /**
@@ -18,7 +20,9 @@ export const async = ({ dispatch }) => {
        * with that data and dispatch it
        */
       action.payload.then((response) => {
-        const newAction = { ...action, payload: response };
+        const newAction = {
+          ...action, payload: response,
+        };
         dispatch(newAction);
       });
     };

@@ -3,7 +3,9 @@ import { IMAGES } from '../../../assets/images/index';
 import styles from './logo.scss';
 
 export const Logo = (props) => {
-  const { height } = props;
+  const {
+    height,
+  } = props;
   return (
     <div
       className={styles.logo}
@@ -11,7 +13,10 @@ export const Logo = (props) => {
         height,
       }}
     >
-      <img src={IMAGES.logo} alt="MyBurger" />
+      <img
+        src={IMAGES.logo}
+        alt="MyBurger"
+      />
     </div>
   );
 };

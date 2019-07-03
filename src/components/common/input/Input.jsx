@@ -21,53 +21,63 @@ export const Input = (props) => {
   }
 
   switch (elementType) {
-    case INPUTS.INPUT:
-      inputElement = (
-        <input
-          className={inputClasses.join(' ')}
-          {...elementConfig}
-          value={value}
-          onChange={onChange}
-        />
-      );
-      break;
-    case INPUTS.TEXTAREA:
-      inputElement = (
-        <textarea
-          className={inputClasses.join(' ')}
-          {...elementConfig}
-          value={value}
-          onChange={onChange}
-        />
-      );
-      break;
-    case INPUTS.SELECT:
-      inputElement = (
-        <select className={inputClasses.join(' ')} value={value} onChange={onChange}>
-          {elementConfig.options.map((option) => {
-            return (
-              <option key={option.value} value={option.value}>
-                {option.displayValue}
-              </option>
-            );
-          })}
-        </select>
-      );
-      break;
-    default:
-      inputElement = (
-        <input
-          className={inputClasses.join(' ')}
-          {...elementConfig}
-          value={value}
-          onChange={onChange}
-        />
-      );
+  case INPUTS.INPUT:
+    inputElement = (
+      <input
+        className={inputClasses.join(' ')}
+        {...elementConfig}
+        value={value}
+        onChange={onChange}
+      />
+    );
+    break;
+  case INPUTS.TEXTAREA:
+    inputElement = (
+      <textarea
+        className={inputClasses.join(' ')}
+        {...elementConfig}
+        value={value}
+        onChange={onChange}
+      />
+    );
+    break;
+  case INPUTS.SELECT:
+    inputElement = (
+      <select
+        className={inputClasses.join(' ')}
+        value={value}
+        onChange={onChange}
+      >
+        {elementConfig.options.map((option) => {
+          return (
+            <option
+              key={option.value}
+              value={option.value}
+            >
+              {option.displayValue}
+            </option>
+          );
+        })}
+      </select>
+    );
+    break;
+  default:
+    inputElement = (
+      <input
+        className={inputClasses.join(' ')}
+        {...elementConfig}
+        value={value}
+        onChange={onChange}
+      />
+    );
   }
 
   return (
     <div className={styles.input}>
-      <label className={styles.label} htmlFor={inputElement.name}>
+      <label
+        className={styles.label}
+        htmlFor={inputElement.name}
+      >
         {label}
       </label>
       {inputElement}

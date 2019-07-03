@@ -79,8 +79,12 @@ export const ORDER_FORM = {
     elementType: 'select',
     elementConfig: {
       options: [
-        { value: 'fastest', displayValue: 'Fastest' },
-        { value: 'cheapest', displayValue: 'Cheapest' },
+        {
+          value: 'fastest', displayValue: 'Fastest',
+        },
+        {
+          value: 'cheapest', displayValue: 'Cheapest',
+        },
       ],
     },
     value: '',

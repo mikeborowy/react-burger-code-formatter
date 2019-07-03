@@ -11,21 +11,41 @@ import { BurgerBuilder, Checkout, Orders, SharedLayout, Auth, Logout } from './v
 
 class AppComponent extends Component {
   componentDidMount() {
-    const { onAuthCheckState } = this.props;
+    const {
+      onAuthCheckState,
+    } = this.props;
     onAuthCheckState();
   }
 
   renderRoutes = () => {
-    const { isAuth } = this.props;
+    const {
+      isAuth,
+    } = this.props;
 
     if (isAuth) {
       return (
         <Switch>
-          <Route path={ROUTES.LOG_OUT.LINK} component={Logout} />
-          <Route path={ROUTES.AUTH.LINK} component={Auth} />
-          <Route path={ROUTES.BUILDER.LINK} component={BurgerBuilder} exact />
-          <Route path={ROUTES.CHECKOUT.LINK} component={Checkout} />
-          <Route path={ROUTES.ORDERS.LINK} component={Orders} />
+          <Route
+            path={ROUTES.LOG_OUT.LINK}
+            component={Logout}
+          />
+          <Route
+            path={ROUTES.AUTH.LINK}
+            component={Auth}
+          />
+          <Route
+            path={ROUTES.BUILDER.LINK}
+            component={BurgerBuilder}
+            exact
+          />
+          <Route
+            path={ROUTES.CHECKOUT.LINK}
+            component={Checkout}
+          />
+          <Route
+            path={ROUTES.ORDERS.LINK}
+            component={Orders}
+          />
           <Redirect to={ROUTES.BUILDER.LINK} />
         </Switch>
       );
@@ -33,8 +53,15 @@ class AppComponent extends Component {
 
     return (
       <Switch>
-        <Route path={ROUTES.AUTH.LINK} component={Auth} />
-        <Route path={ROUTES.BUILDER.LINK} component={BurgerBuilder} exact />
+        <Route
+          path={ROUTES.AUTH.LINK}
+          component={Auth}
+        />
+        <Route
+          path={ROUTES.BUILDER.LINK}
+          component={BurgerBuilder}
+          exact
+        />
       </Switch>
     );
   };
@@ -61,11 +88,11 @@ const mapDispatchToProps = (dispatch) => {
     {
       onAuthCheckState,
     },
-    dispatch
+    dispatch,
   );
 };
 
 export const App = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(AppComponent);

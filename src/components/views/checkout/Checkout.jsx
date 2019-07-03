@@ -15,17 +15,23 @@ const defaultProps = {
 
 class CheckoutComponent extends Component {
   checkoutContinueHandler = () => {
-    const { history } = this.props;
+    const {
+      history,
+    } = this.props;
     history.replace(`${ROUTES.CHECKOUT.LINK}${ROUTES.CONTACT_DATA.LINK}`);
   };
 
   checkoutCancelHandler = () => {
-    const { history } = this.props;
+    const {
+      history,
+    } = this.props;
     history.goBack();
   };
 
   renderSummary() {
-    const { ingredients, isPurchased, match } = this.props;
+    const {
+      ingredients, isPurchased, match,
+    } = this.props;
     if (ingredients) {
       if (isPurchased) {
         return <Redirect to={ROUTES.BUILDER.LINK} />;
@@ -38,7 +44,10 @@ class CheckoutComponent extends Component {
             onCheckoutContinue={this.checkoutContinueHandler}
             onCheckoutCancel={this.checkoutCancelHandler}
           />
-          <Route path={match.path + ROUTES.CONTACT_DATA.LINK} component={ContactData} />
+          <Route
+            path={match.path + ROUTES.CONTACT_DATA.LINK}
+            component={ContactData}
+          />
         </Fragment>
       );
     }
@@ -62,5 +71,5 @@ const mapStateToProps = (state) => {
 
 export const Checkout = connect(
   mapStateToProps,
-  null
+  null,
 )(CheckoutComponent);

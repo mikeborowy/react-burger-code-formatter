@@ -11,19 +11,27 @@ export const actionTypes = {
 
 /** Action Creators */
 export const onAuthStart = () => {
-  return { type: actionTypes.AUTH_START };
+  return {
+    type: actionTypes.AUTH_START,
+  };
 };
 
 export const onAuthSuccess = (authData) => {
-  return { type: actionTypes.AUTH_SUCCESS, authData };
+  return {
+    type: actionTypes.AUTH_SUCCESS, authData,
+  };
 };
 
 export const onAuthFail = (error) => {
-  return { type: actionTypes.AUTH_FAIL, error };
+  return {
+    type: actionTypes.AUTH_FAIL, error,
+  };
 };
 
 export const onAuthLogout = () => {
-  return { type: actionTypes.AUTH_LOGOUT };
+  return {
+    type: actionTypes.AUTH_LOGOUT,
+  };
 };
 
 export const onLogout = () => {
@@ -42,7 +50,9 @@ export const onCheckAuthTimeout = (expirationTime) => {
 };
 
 export const onSetAuthRedirectPath = (path) => {
-  return { type: actionTypes.SET_AUTH_REDIRECT_PATH, path };
+  return {
+    type: actionTypes.SET_AUTH_REDIRECT_PATH, path,
+  };
 };
 
 export const onAuthCheckState = () => {
@@ -50,14 +60,17 @@ export const onAuthCheckState = () => {
     const token = localStorage.getItem('token');
     if (!token) {
       dispatch(onLogout());
-    } else {
+    }
+    else {
       const expirationDate = new Date(localStorage.getItem('expirationDate'));
       if (expirationDate <= new Date()) {
         dispatch(onLogout());
-      } else {
+      }
+      else {
         const userId = localStorage.getItem('userId');
         dispatch(onAuthSuccess(token, userId));
-        dispatch(onCheckAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
+        dispatch(onCheckAuthTimeout((expirationDate.getTime() - new Date()
+        .getTime()) / 1000));
       }
     }
   };
@@ -75,7 +88,8 @@ export const onAuthStartAPI = (email, password, isSignup) => {
 
     try {
       const response = await (isSignup ? authAPI.signUp(authData) : authAPI.signIn(authData));
-      const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
+      const expirationDate = new Date(new Date()
+      .getTime() + response.data.expiresIn * 1000);
       const params = {
         token: response.data.idToken,
         expirationDate,
@@ -84,7 +98,8 @@ export const onAuthStartAPI = (email, password, isSignup) => {
       setStorage(params);
       dispatch(onAuthSuccess(response.data));
       dispatch(onCheckAuthTimeout(response.data.expiresIn));
-    } catch (error) {
+    }
+    catch (error) {
       dispatch(onAuthFail(error));
     }
   };
@@ -101,40 +116,40 @@ const initialState = {
 
 export const auth = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.AUTH_START:
-      return {
-        ...state,
-        error: false,
-        isLoading: true,
-      };
-    case actionTypes.AUTH_SUCCESS:
-      return {
-        ...state,
-        userId: action.authData.email,
-        token: action.authData.idToken,
-        error: false,
-        isLoading: false,
-      };
-    case actionTypes.AUTH_FAIL:
-      return {
-        ...state,
-        error: action.error,
-        isLoading: false,
-      };
-    case actionTypes.AUTH_LOGOUT:
-      return {
-        ...state,
-        userId: null,
-        token: null,
-        error: false,
-        isLoading: false,
-      };
-    case actionTypes.SET_AUTH_REDIRECT_PATH:
-      return {
-        ...state,
-        authRedirectPath: action.path,
-      };
-    default:
-      return state;
+  case actionTypes.AUTH_START:
+    return {
+      ...state,
+      error: false,
+      isLoading: true,
+    };
+  case actionTypes.AUTH_SUCCESS:
+    return {
+      ...state,
+      userId: action.authData.email,
+      token: action.authData.idToken,
+      error: false,
+      isLoading: false,
+    };
+  case actionTypes.AUTH_FAIL:
+    return {
+      ...state,
+      error: action.error,
+      isLoading: false,
+    };
+  case actionTypes.AUTH_LOGOUT:
+    return {
+      ...state,
+      userId: null,
+      token: null,
+      error: false,
+      isLoading: false,
+    };
+  case actionTypes.SET_AUTH_REDIRECT_PATH:
+    return {
+      ...state,
+      authRedirectPath: action.path,
+    };
+  default:
+    return state;
   }
 };

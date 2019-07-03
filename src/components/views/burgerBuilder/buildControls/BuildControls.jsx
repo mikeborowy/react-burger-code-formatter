@@ -42,7 +42,10 @@ export const BuildControls = (props) => {
         <strong>{totalPrice.toFixed(2)}</strong>
       </p>
       {renderControls}
-      <button type="button" {...orderBtnProps}>
+      <button
+        type="button"
+        {...orderBtnProps}
+      >
         ORDER NOW
       </button>
     </div>

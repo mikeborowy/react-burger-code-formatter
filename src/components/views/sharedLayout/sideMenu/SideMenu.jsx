@@ -17,8 +17,12 @@ const defaultProps = {
 };
 
 export const SideMenu = (props) => {
-  const { open, onClose } = props;
-  const { sideMenu, close, logo } = classes;
+  const {
+    open, onClose,
+  } = props;
+  const {
+    sideMenu, close, logo,
+  } = classes;
   let attachedClasses = [sideMenu, close];
 
   if (open) {
@@ -26,7 +30,10 @@ export const SideMenu = (props) => {
   }
   return (
     <Aux>
-      <Overlay isOpen={open} onClose={onClose} />
+      <Overlay
+        isOpen={open}
+        onClose={onClose}
+      />
       <div className={attachedClasses.join(' ')}>
         <div className={logo}>
           <Logo />

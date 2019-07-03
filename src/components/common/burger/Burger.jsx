@@ -19,7 +19,9 @@ const defaultProps = {
 };
 
 export const Burger = (props) => {
-  const { ingredients } = props;
+  const {
+    ingredients,
+  } = props;
 
   /**
    * We try to keep things simple, so we avoid using
@@ -40,8 +42,13 @@ export const Burger = (props) => {
   //     .reduce((acc, item) => [...acc, ...item], []);
 
   const renderIngredients = (ingredientKey) => {
-    return [...Array(ingredients[ingredientKey])].map((_, idx) => {
-      return <Ingredient key={`${ingredientKey}_${idx * Math.random()}`} type={ingredientKey} />;
+    return [...Array(ingredients[ingredientKey])].map((ing, idx) => {
+      return (
+        <Ingredient
+          key={`${ingredientKey}_${idx * Math.random()}`}
+          type={ingredientKey}
+        />
+      );
     });
   };
 
@@ -51,12 +58,12 @@ export const Burger = (props) => {
     }
 
     return Object.keys(ingredients)
-      .map((ingredient) => {
-        return renderIngredients(ingredient);
-      })
-      .reduce((acc, item) => {
-        return [...acc, ...item];
-      }, []);
+    .map((ingredient) => {
+      return renderIngredients(ingredient);
+    })
+    .reduce((acc, item) => {
+      return [...acc, ...item];
+    }, []);
   };
 
   return (

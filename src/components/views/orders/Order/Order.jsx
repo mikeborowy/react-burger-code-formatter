@@ -12,7 +12,7 @@ export const Order = (props) => {
       });
     }
 
-    return ingredients.map((ig) => {
+    return ingredients.map((ing) => {
       const style = {
         textTransform: 'capitalize',
         display: 'inline-block',
@@ -23,24 +23,37 @@ export const Order = (props) => {
 
       const props = {
         style,
-        key: ig.name,
+        key: ing.name,
       };
 
       return (
         <span {...props}>
-          {ig.name} ({ig.amount})
+          {ing.name}
+          {' '}
+          {ing.amount}
         </span>
       );
     });
   };
 
-  const { totalPrice } = props;
+  const {
+    totalPrice,
+  } = props;
 
   return (
     <div className={styles.order}>
-      <p>Ingredients: {renderIngredients()}</p>
       <p>
-        Price: <strong>USD {Number.parseFloat(totalPrice).toFixed(2)}</strong>
+    Ingredients:
+        {renderIngredients()}
+      </p>
+      <p>
+        Price:
+        {' '}
+        <strong>
+          USD
+          {Number.parseFloat(totalPrice)
+          .toFixed(2)}
+        </strong>
       </p>
     </div>
   );

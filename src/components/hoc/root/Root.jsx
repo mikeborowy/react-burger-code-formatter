@@ -14,7 +14,9 @@ const defaultProps = {
 };
 
 export const Root = (props) => {
-  const { initialState, children } = props;
+  const {
+    initialState, children,
+  } = props;
   return <Provider store={configStore(initialState)}>{children}</Provider>;
 };
 
