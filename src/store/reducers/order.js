@@ -26,7 +26,8 @@ export const onOrderBurgerInit = () => {
 };
 export const onOrderBurgerError = (error) => {
   return {
-    type: actionTypes.ORDER_ERR, error,
+    type: actionTypes.ORDER_ERR,
+    error,
   };
 };
 export const onOrderBurgerSet = (orderId, order) => {
@@ -49,12 +50,14 @@ export const onOrdersInit = () => {
 };
 export const onOrdersError = (error) => {
   return {
-    type: actionTypes.ORDERS_ERR, error,
+    type: actionTypes.ORDERS_ERR,
+    error,
   };
 };
 export const onOrdersSet = (orders) => {
   return {
-    type: actionTypes.ORDERS_SET, orders,
+    type: actionTypes.ORDERS_SET,
+    orders,
   };
 };
 

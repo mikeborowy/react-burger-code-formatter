@@ -18,13 +18,15 @@ export const onAuthStart = () => {
 
 export const onAuthSuccess = (authData) => {
   return {
-    type: actionTypes.AUTH_SUCCESS, authData,
+    type: actionTypes.AUTH_SUCCESS,
+    authData,
   };
 };
 
 export const onAuthFail = (error) => {
   return {
-    type: actionTypes.AUTH_FAIL, error,
+    type: actionTypes.AUTH_FAIL,
+    error,
   };
 };
 
@@ -51,7 +53,8 @@ export const onCheckAuthTimeout = (expirationTime) => {
 
 export const onSetAuthRedirectPath = (path) => {
   return {
-    type: actionTypes.SET_AUTH_REDIRECT_PATH, path,
+    type: actionTypes.SET_AUTH_REDIRECT_PATH,
+    path,
   };
 };
 

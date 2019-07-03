@@ -21,7 +21,8 @@ export const async = ({
        */
       action.payload.then((response) => {
         const newAction = {
-          ...action, payload: response,
+          ...action,
+          payload: response,
         };
         dispatch(newAction);
       });

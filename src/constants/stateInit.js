@@ -80,10 +80,12 @@ export const ORDER_FORM = {
     elementConfig: {
       options: [
         {
-          value: 'fastest', displayValue: 'Fastest',
+          value: 'fastest',
+          displayValue: 'Fastest',
         },
         {
-          value: 'cheapest', displayValue: 'Cheapest',
+          value: 'cheapest',
+          displayValue: 'Cheapest',
         },
       ],
     },
