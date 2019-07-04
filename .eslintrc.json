@@ -151,6 +151,7 @@
         ]
       }
     ],
+    "react/jsx-key": "error",
     "react/jsx-max-props-per-line": [
       "warn",
       {
@@ -164,6 +165,7 @@
         "indentLogicalExpressions": true
       }
     ],
+    "react/no-multi-comp": "error",
     "react/sort-prop-types": [
       "warn",
       {
